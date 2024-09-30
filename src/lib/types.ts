@@ -1,5 +1,7 @@
  import type{
-    Example,
+    example,
+    CatalagoBeca,
+    
 
 } from '@prisma/client'; 
 
@@ -17,5 +19,6 @@ export interface LoginResponseData {
 }
 
 export type{
-    Example,
+    CatalagoBeca,
+    example
 }

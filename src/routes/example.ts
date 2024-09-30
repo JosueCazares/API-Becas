@@ -2,7 +2,7 @@ import { Router } from 'express';
 import type { Request, Response } from 'express';
 import { prisma } from '../db'
 import type { APIResponse } from '../lib/types';
-import type { Example } from '@prisma/client';
+import type { example } from '@prisma/client';
 import {ZodExampleObj} from '@/validation/ZodExample'
 import { z, type ZodIssue } from 'zod';
 
@@ -11,7 +11,7 @@ export const router = Router();
 router.get('/', async (_: Request, res: Response) => {
     let examples = await prisma.example.findMany();
 
-    let responseOk: APIResponse<Example[]> = {
+    let responseOk: APIResponse<example[]> = {
         status: 'success',
         data: examples
     }
@@ -25,7 +25,7 @@ router.post('/', async (req: Request, res: Response) => {
         let example = await prisma.example.create({
             data: camposValidados
         });
-        let responseOk: APIResponse<Example> = {
+        let responseOk: APIResponse<example> = {
             status: 'success',
             data: example
         }

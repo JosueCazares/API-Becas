@@ -8,12 +8,23 @@ generator client {
   provider = "prisma-client-js"
 }
 
+
 datasource db {
   provider = "mysql"
   url      = env("DATABASE_URL")
 }
-
-model Example {
-  id   Int    @id @default(autoincrement())
-  name String
+model example {
+    id          Int      @id @default(autoincrement()) // Primary Key
+  name  String
+}
+model CatalagoBeca {
+  id          Int      @id @default(autoincrement()) // Primary Key
+  nombre String
+  descripcion String
+  estatus Estatus
+  
+}
+enum Estatus {
+  Activa 
+  Inactiva 
 }
