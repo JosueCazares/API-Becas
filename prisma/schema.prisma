@@ -22,7 +22,27 @@ model CatalagoBeca {
   nombre String
   descripcion String
   estatus Estatus
+    solicitudes SolicitudBeca[] 
+
+}
+
+model SolicitudBeca {
+  id          Int      @id @default(autoincrement()) // Primary Key
+  idAlumno    Int // Puede ser opcional si decides no usarlo como referencia
+  idBeca      Int
+  estatus     EstatusSolicitud
+  comentarios String?
+
+  // Relaciones (comentar o eliminar la relación hasta que exista el modelo)
+  // alumno Alumno @relation(fields: [idAlumno], references: [id])
+  beca   CatalagoBeca @relation(fields: [idBeca], references: [id])
   
+  @@index([idBeca])
+}
+
+enum EstatusSolicitud {
+  Aceptado
+  Rechazado
 }
 enum Estatus {
   Activa 
